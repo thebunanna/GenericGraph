@@ -54,6 +54,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "GenericGraphNode_Editor")
 	FText NodeTitle;
 
+	UPROPERTY(EditDefaultsOnly, Category = "GenericGraphNode_Editor")
+	FText NodeSubTitle;
+
 	UPROPERTY(VisibleDefaultsOnly, Category = "GenericGraphNode_Editor")
 	TSubclassOf<UGenericGraph> CompatibleGraphType;
 

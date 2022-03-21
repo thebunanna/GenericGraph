@@ -176,6 +176,35 @@ void SEdNode_GenericGraphNode::UpdateGraphNode()
 										
 							// Node Title
 							+ SHorizontalBox::Slot()
+							.Padding(FMargin(4.0f, 10.0f, 4.0f, 10.0f))
+							[
+								SNew(SVerticalBox)
+								+ SVerticalBox::Slot()
+								.AutoHeight()
+								[
+									SAssignNew(InlineEditableText, SInlineEditableTextBlock)
+									.Style(FEditorStyle::Get(), "Graph.StateNode.NodeTitleInlineEditableText")
+									.Text(NodeTitle.Get(), &SNodeTitle::GetHeadTitle)
+									.OnVerifyTextChanged(this, &SEdNode_GenericGraphNode::OnVerifyNameTextChanged)
+									.OnTextCommitted(this, &SEdNode_GenericGraphNode::OnNameTextCommited)
+									.IsReadOnly(this, &SEdNode_GenericGraphNode::IsNameReadOnly)
+									.IsSelected(this, &SEdNode_GenericGraphNode::IsSelectedExclusively)
+								]
+								+ SVerticalBox::Slot()
+								.AutoHeight()
+								[
+									NodeTitle.ToSharedRef()
+								]
+							]
+
+						]		
+						+ SVerticalBox::Slot()
+						.AutoHeight()
+						[
+							SNew(SHorizontalBox)
+										
+							// Node Title
+							+ SHorizontalBox::Slot()
 							.Padding(FMargin(4.0f, 0.0f, 4.0f, 0.0f))
 							[
 								SNew(SVerticalBox)
@@ -196,7 +225,8 @@ void SEdNode_GenericGraphNode::UpdateGraphNode()
 									NodeTitle.ToSharedRef()
 								]
 							]
-						]					
+
+						]
 					]
 				]
 			]
